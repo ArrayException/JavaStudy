@@ -1,2 +1,2 @@
-# test
-这是一个演示项目
+# JavaStudy
+这是我学习Java代码
