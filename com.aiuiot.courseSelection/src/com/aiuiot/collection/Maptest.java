@@ -138,14 +138,41 @@ public class Maptest {
 		}
 	}
 	
+	/**
+	 * 测试Map中是否包含某个key值或者某个value值
+	 * @param args
+	 */
+	public void testContainsKeyOrValue() {
+		//提示用户输入学生ID
+				System.out.println("请输入要查询的学生ID");
+				Scanner input = new Scanner(System.in);
+				String id = input.next();
+		//在Map中，用containsKey()方法，来判断是否包含某个key值
+				System.out.println("您输入的学生ID为"+id+",在学生映射表中是否存在："+students.containsKey(id));
+				if(students.containsKey(id)) {
+					System.out.println("对应的学生为:"+students.get(id).name);
+				}
+				//提示输入学生姓名
+				System.out.println("请输入要查询的学生姓名:");
+				String name = input.next();
+				if(students.containsKey(new Student(null, name)))
+					System.out.println("在学生映射表中确实包含学生:"+name);
+				else
+					System.out.println("映射表中不存在该学生:"+name);
+		//用containsValue()方法，来判断是否包含某个value值
+		
+		
+	}
+	
 	public static void main(String[] args) {
 		Maptest mt = new Maptest();
 		mt.testPut();
 		mt.testKeySet();
 //		mt.tsetRemove();
 //		mt.testEntrySet();
-		mt.testModify();
-		mt.testEntrySet();
+//		mt.testModify();
+//		mt.testEntrySet();
+		mt.testContainsKeyOrValue();
 
 	}
 

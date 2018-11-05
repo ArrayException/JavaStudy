@@ -9,9 +9,12 @@ import java.util.Scanner;
 public class SetTest {
 	
 	public List<Course> coursesToSelect;
+	private Scanner input;
+	public Student stu;
 	
 	public SetTest() {
 		coursesToSelect = new ArrayList<Course>();
+		input = new Scanner(System.in);
 	}
 	
 	public void testAdd(){
@@ -44,13 +47,35 @@ public class SetTest {
 		
 	}
 	
-	public static void main(String[] args) {
-		SetTest st = new SetTest();
-		st.testAdd();
-		st.testForEach();
-		
+	/**
+	 * 测试List的contains方法
+	 * @param args
+	 */
+	public void testListContains() {
+		//取得备选课程序列的第0个元素
+		Course course = coursesToSelect.get(0);
+		//打印输出coursesToSelect是否包含course对象
+		System.out.println("取得课程"+course.name);
+		System.out.println("备选课程是否包含课程："+course.name+""+coursesToSelect.contains(course));
+	
+		//提示输入课程名称
+		System.out.println("请输入课程名称：");
+		String name = input.next();
+		//创建一个新的课程对象，ID和名称，与course对象完全一样
+		Course course2 = new Course();
+		course2.name = name;
+		System.out.println("新创建课程："+course2.name);
+		System.out.println("备选课程中是否包含课程："+course2.name+","+coursesToSelect.contains(course2));
+		//通过indexOf方法来取得某元素的索引位置
+		if(coursesToSelect.contains(course2)) {
+			System.out.println("课程："+course2.name+"的索引位置为："+coursesToSelect.indexOf(course2));
+		}
+	}
+	
+	//创建学生对象并且选课的方法
+	public void createStudentAndSelectCours() {
 		//创建一个学生对象
-		Student stu = new Student("1", "小王");
+		stu = new Student("1", "小王");
 		System.out.println("欢迎学生"+stu.name+"选课");
 		
 		//创建一个scanner对象，用于接收键盘输入的课程ID
@@ -59,7 +84,7 @@ public class SetTest {
 		for(int i = 0;i < 3; i++) {
 			System.out.println("请输入课程ID：");
 			String courseId = input.next();
-			for (Course cr : st.coursesToSelect) {
+			for (Course cr : coursesToSelect) {
 				if(cr.id.equals(courseId)) {
 					stu.courses.add(cr);
 					/**
@@ -72,8 +97,32 @@ public class SetTest {
 				}
 			}
 		}
+	}
 	
-		st.testForEachForSet(stu);
+	/**
+	 * 测试Set的contains方法
+	 * @param args
+	 */
+	public void testSetContains() {
+		//提示输入课程名称
+		System.out.println("请输入学生已选的课程名称：");
+		String name = input.next();
+		//创建一个新的对象，ID和名称，与course对象完全一样
+		Course course2 = new Course();
+		course2.name = name;
+		System.out.println("新创建课程："+course2.name);
+		System.out.println("备选课程中是否包含课程："+course2.name+","+stu.courses.contains(course2));
+	}
+	
+	public static void main(String[] args) {
+		SetTest st = new SetTest();
+		st.testAdd();
+		st.testListContains();
+		st.testForEach();
+		
+//		st.createStudentAndSelectCours();
+//		st.testSetContains();
+		
 	}
 
 }
