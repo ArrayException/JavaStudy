@@ -3,7 +3,7 @@
 这是我学习Java所做练习的源码
 
 ## 目录
-
+```
 - com.aiuiot.courseSelect(学生选课系统)
 目录：
 +—— bin
@@ -20,6 +20,8 @@
      +—— StudentComparator.java
      +—— TestGeneric.java
      
+```
+
 
 - com.aiuiot.pockergame(简单扑克牌游戏)
 目录：
